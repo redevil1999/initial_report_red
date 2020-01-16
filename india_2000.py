@@ -4,16 +4,18 @@ with open('india_200.json', encoding= 'utf-16') as file:
     data = json.load(file)
 
 #first select for the country India
-india_incidents = []
+india_list = []
 for observation in data:
     if observation['country'] ==  'India':
-        india_incidents.append(observation)
+        india_list.append(observation)
         if observation['year'] != int(2000):
-            india_incidents.remove(observation)
+            india_list.remove(observation)
 
 
-for india in india_incidents:
-    if india['year'] != 2000:
-        print('there is a not 2000 in there!')
 
-
+with open('india_fatalities.csv', 'w', encoding= 'utf8') as file:
+    for entry in india_list:
+        fatalities = {
+            'deaths': entry['best']
+        }
+        file.write(f"{fatalities['deaths']}\n")
