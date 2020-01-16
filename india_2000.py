@@ -7,10 +7,13 @@ with open('india_200.json', encoding= 'utf-16') as file:
 india_incidents = []
 for observation in data:
     if observation['country'] ==  'India':
-        india_incidents.append(observation['country_id'])
+        india_incidents.append(observation)
+        if observation['year'] != int(2000):
+            india_incidents.remove(observation)
 
-print(set(india_incidents))
+
+for india in india_incidents:
+    if india['year'] != 2000:
+        print('there is a not 2000 in there!')
 
 
-#select countries with a different country id
-#770, 771, 100, 775, 780, 433, 145, 438, 700
