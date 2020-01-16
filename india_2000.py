@@ -14,6 +14,7 @@ for observation in data:
 
 
 with open('india_fatalities.csv', 'w', encoding= 'utf8') as file:
+    file.write('fatalities\n')
     for entry in india_list:
         fatalities = {
             'deaths': entry['best']
