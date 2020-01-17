@@ -43,7 +43,7 @@ ggplot(data = india_firsthalf_type) +
       ggtitle('Violence per type of violence in India 1989-2001') +
   xlab('Type of Violence')+
   ylab('Number of Fatalities')
-  
+ggsave('india_secondhalf.jpeg')  
 
 ```
 
@@ -54,5 +54,5 @@ ggplot(data = india_secondhalf_type) +
       ggtitle('Violence per type of violence in India 2002-2015') +
   xlab('Type of Violence')+
   ylab('Number of Fatalities')
-
+ggsave('india_secondhalf.jpeg')
 ```
