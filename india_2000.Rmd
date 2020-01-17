@@ -12,15 +12,20 @@ Initially, the fatalities in India in 2000 will have to be uploaded.
 
 ```{r}
 
-fatalities_data <- read.csv('india_fatalities.csv')
+india_firsthalf <- read.csv('india_1989_2001.csv')
+
+india_secondhalf <- read.csv('india_2002_2015.csv')
 
 ```
 
 The aim of this report was to calculate the total amount of fatalities in India in 2000. Therefore, sum adds up all the integers in the file.
 ```{r}
 
-total_fatalities <- fatalities_data %>%
-  summarise(total = sum(fatalities))
+india_firsthalf_type <- india_firsthalf %>%
+  group_by(type_of_violence)
+
+india_secondhalf_type <- india_secondhalf %>%
+  group_by(type_of_violence)
 
 ```
 
