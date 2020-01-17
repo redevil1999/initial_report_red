@@ -22,17 +22,37 @@ The aim of this report was to calculate the total amount of fatalities in India 
 ```{r}
 
 india_firsthalf_type <- india_firsthalf %>%
+  # group_by(type_of_violence) %>%
+  mutate(type_of_violence = ifelse(type_of_violence == 1, 'State Based Conflict', type_of_violence)) %>%
+  mutate(type_of_violence = ifelse(type_of_violence == 2, 'Non-state Conflict', ifelse(type_of_violence == 3, 'One-sided Violence', type_of_violence))) %>%
   group_by(type_of_violence)
 
+
+
 india_secondhalf_type <- india_secondhalf %>%
+  mutate(type_of_violence = ifelse(type_of_violence == 1, 'State Based Conflict', type_of_violence)) %>%
+  mutate(type_of_violence = ifelse(type_of_violence == 2, 'Non-state Conflict', ifelse(type_of_violence == 3, 'One-sided Violence', type_of_violence))) %>%
   group_by(type_of_violence)
 
 ```
 
 ```{r}
 
-ggplot(data = total_fatalities) +
-  geom_col(mapping = aes(x = 'India', y = total_fatalities))+
-      ggtitle('Total number of fatalities in India in 2000')
+ggplot(data = india_firsthalf_type) +
+  geom_col(mapping = aes(x = type_of_violence, y = fatalities))+
+      ggtitle('Violence per type of violence in India 1989-2001') +
+  xlab('Type of Violence')+
+  ylab('Number of Fatalities')
+  
+
+```
+
+```{r}
+
+ggplot(data = india_secondhalf_type) +
+  geom_col(mapping = aes(x = type_of_violence, y = fatalities))+
+      ggtitle('Violence per type of violence in India 2002-2015') +
+  xlab('Type of Violence')+
+  ylab('Number of Fatalities')
 
 ```
