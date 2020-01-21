@@ -2,3 +2,14 @@
 *.json
 
 .Rproj.user/
+.RData
+
+.Rhistory
+
+*.csv
+
+*.Rproj
+
+*.html
+
+india_2000.Rmd
